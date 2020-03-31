@@ -32,7 +32,7 @@ jobs:
       
       # - name: wtf
       #   run: php -v
-      
+      # # echo "::set-output name=version::$ver"
       - name: test
         run: |
           ver=$(php -v | grep -oP '(?<=PHP )\d.\d')
@@ -44,6 +44,8 @@ jobs:
       
       - name: is php ver
         run: |
-          echo PHP Version ${{ steps.php-ver-outpus.version }} does not match PHP Version ${{ matrix.php-version }} defined in the matrix.
+          $version=${{ steps.php-ver-outpus.version }}
+          $matrix=${{ matrix.php-version }}
+          echo "PHP Version $version does not match PHP Version $matrix defined in the matrix."
           exit 1
         if: steps.php-ver.outputs.version != matrix.php-versions
