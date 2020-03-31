@@ -42,10 +42,8 @@ jobs:
       - name: t
         run: echo ${{ steps.php-ver.outputs.version }}
       
-      - name: is php ver
+      - name: Using PHP Version from matrix
         run: |
-          $version=${{ steps.php-ver-outpus.version }}
-          $matrix=${{ matrix.php-version }}
-          echo "PHP Version $version does not match PHP Version $matrix defined in the matrix."
+          echo "Runner is not using PHP Version defined in the php-versions matrix."
           exit 1
         if: steps.php-ver.outputs.version != matrix.php-versions
