@@ -15,7 +15,8 @@ jobs:
         uses: actions/checkout@v2.0.0
       
       - name: Set PHP versions
-        run: update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
+        run: which php
+        # run: update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
 
       - name: wtf
         run: php -v
