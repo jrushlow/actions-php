@@ -18,6 +18,9 @@ jobs:
         # run: which php
         run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
       
+      - name: Cat Xdebug ini
+        run: cat /etc/php/7.4/cli/conf.d/20-xdebug.ini
+      
       - name: Disable Xdebug
         run: sudo rm /etc/php/${{ matrix.php-versions }}/cli/conf.d/20-xdebug.ini
       
@@ -26,9 +29,6 @@ jobs:
 
       - name: Cat PHP ini
         run: cat /etc/php/${{ matrix.php-versions }}/cli/php.ini
-      
-      - name: Cat Xdebug ini
-        run: cat /etc/php/7.4/cli/conf.d/20-xdebug.ini
       
       - name: wtf
         run: php -v
