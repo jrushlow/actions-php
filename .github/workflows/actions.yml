@@ -34,5 +34,5 @@ jobs:
         run: php -v
       
       - name: test
-        run: echo ::set-output name=version::value
-        if: steps.test.outputs.version == ${{ matrix.php-versions }}
+        run: php -v | echo ::set-output name=version::value
+        if: steps.test.outputs.version == matrix.php-versions
