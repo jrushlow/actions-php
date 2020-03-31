@@ -43,5 +43,5 @@ jobs:
         run: echo ${{ steps.php-ver.outputs.version }}
       
       - name: is php ver
-        run: exit
-        if: steps.php-ver.outputs.version == matrix.php-versions
+        run: exit 12
+        if: steps.php-ver.outputs.version != matrix.php-versions
