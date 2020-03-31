@@ -11,8 +11,8 @@ jobs:
         php-versions: ['7.2', '7.3', '7.4']
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.0.0
+      # - name: Checkout
+      #   uses: actions/checkout@v2.0.0
 
       - name: Set PHP versions
         # run: which php
@@ -34,5 +34,5 @@ jobs:
       #   run: php -v
       
       - name: test
-        run: php -v | grep -oP "(?<=PHP )\d.\d" | echo ::set-output name=version::value
+        run: echo ::set-output name=version::php -v | grep -oP "(?<=PHP )\d.\d"
         if: steps.test.outputs.version == matrix.php-versions
