@@ -16,6 +16,9 @@ jobs:
       
       - name: Show php config
         run: php -i
+
+      - name: Cat PHP ini
+        run: cat /usr/local/lib/php.ini
       
       - name: Set PHP versions
         # run: which php
