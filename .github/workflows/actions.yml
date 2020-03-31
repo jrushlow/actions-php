@@ -36,7 +36,8 @@ jobs:
       - name: test
         run: |
           ver=$(php -v | grep -oP '(?<=PHP )\d.\d')
-          echo "::set-output name=version::$ver"
+         # echo "::set-output name=version::$ver"
+          echo "::set-output name=version::5.4"          
         id: php-ver
       
       - name: t
