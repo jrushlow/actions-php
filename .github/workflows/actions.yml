@@ -34,5 +34,5 @@ jobs:
       #   run: php -v
       
       - name: test
-        run: echo ::set-output name=version::php -v | grep -oP "(?<=PHP )\d.\d"
+        run: php -v | grep -oP "(?<=PHP )\d.\d" ::set-output name=version::value
         if: steps.test.outputs.version == matrix.php-versions
