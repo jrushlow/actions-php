@@ -34,7 +34,7 @@ jobs:
       #   run: php -v
       
       - name: test
-        run: echo php -v | grep -oP "(?<=PHP )\d.\d" ::set-output name=version::value
+        run: ::set-output name=version::value php -v | grep -oP "(?<=PHP )\d.\d" 
       
       - name: is php ver
         run: exit 12
