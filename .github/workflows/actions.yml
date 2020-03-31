@@ -18,7 +18,7 @@ jobs:
         run: php -i
 
       - name: Cat PHP ini
-        run: cat /usr/local/lib/php.ini
+        run: cat /etc/php/${{ matrix.php-versions }}/cli/php.ini
       
       - name: Set PHP versions
         # run: which php
