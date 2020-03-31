@@ -36,6 +36,3 @@ jobs:
       - name: test
         run: echo ::set-output name=version::value
         if: steps.test.outputs.version == matrix.php-versions
-      
-      - name: testing
-        if: steps.test.outputs.version == matrix.php-versions
