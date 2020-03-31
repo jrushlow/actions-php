@@ -46,5 +46,6 @@ jobs:
       - name: Using PHP Version from matrix
         run: |
           echo "Runner is not using PHP Version defined in the php-versions matrix."
+          php -v
           exit 1
         if: steps.php-ver.outputs.version != matrix.php-versions
