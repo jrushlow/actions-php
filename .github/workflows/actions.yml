@@ -13,6 +13,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
+
+      - name: Set PHP versions
+        # run: which php
+        run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
+      
+      - name: Disable Xdebug
+        run: sed -i "s/zend_extension=xdebug.so/;zend_extension=xdebug.so" /etc/php/${{ matrix.php-versions }}/cli/conf.d/20-xdebug.ini
       
       - name: Show php config
         run: php -i
@@ -23,9 +30,5 @@ jobs:
       - name: Cat Xdebug ini
         run: cat /etc/php/7.4/cli/conf.d/20-xdebug.ini
       
-      - name: Set PHP versions
-        # run: which php
-        run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
-
       - name: wtf
         run: php -v
