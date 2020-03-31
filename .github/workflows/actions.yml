@@ -19,7 +19,7 @@ jobs:
         run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
       
       - name: Disable Xdebug
-        run: sed -i "s/zend_extension=xdebug.so/;zend_extension=xdebug.so" /etc/php/${{ matrix.php-versions }}/cli/conf.d/20-xdebug.ini
+        run: rm /etc/php/${{ matrix.php-versions }}/cli/conf.d/20-xdebug.ini
       
       - name: Show php config
         run: php -i
