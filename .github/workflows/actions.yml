@@ -2,17 +2,16 @@ name: Testing-PHP-Versions
 on: [push, pull_request]
 jobs:
   build:
-    name: Dummy CI Test
+    name: ResetPassword
     runs-on: ubuntu-latest
-    
-  strategy:
-    fail-fast: false
-    matrix:
-      php-versions: ['7.2']
-    
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2.0.0
-  
-    - name: PHP Version
-      runs: php -v
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['7.2']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: PHP Versions
+        runs: php -v
