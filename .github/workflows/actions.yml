@@ -20,6 +20,9 @@ jobs:
       - name: Cat PHP ini
         run: cat /etc/php/${{ matrix.php-versions }}/cli/php.ini
       
+      - name: Cat Xdebug ini
+        run: cat /etc/php/7.4/cli/conf.d/20-xdebug.ini
+      
       - name: Set PHP versions
         # run: which php
         run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
