@@ -14,9 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.0.0
 
-      - name: ls vendor 1
-        run: ls -lah $GITHUB_WORKSPACE/vendor
-
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |
