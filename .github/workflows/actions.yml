@@ -20,7 +20,6 @@ jobs:
       - name: Composer
         run: cat $GITHUB_WORKSPACE/composer.lock
 
-
 #      - name: Set PHP versions
 #        # run: which php
 #        run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
@@ -39,8 +38,20 @@ jobs:
       
       # - name: wtf
       #   run: php -v
-      
+      # # echo "::set-output name=version::$ver"
+      #
 #      - name: test
-#        run: php -v | grep -oP "(?<=PHP )\d.\d" ::set-output name=version::value
+#        run: |
+#          ver=$(php -v | grep -oP '(?<=PHP )\d.\d')
+#          echo "::set-output name=version::$ver"
+#        id: php-ver
 #
-#      - if: steps.test.outputs.version == matrix.php-versions
+#      - name: t
+#        run: echo ${{ steps.php-ver.outputs.version }}
+#
+#      - name: Using PHP Version from matrix
+#        run: |
+#          echo "Runner is not using PHP Version defined in the php-versions matrix."
+#          php -v
+#          exit 1
+#        if: steps.php-ver.outputs.version != matrix.php-versions
