@@ -14,11 +14,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.0.0
 
-      - name: Composer
-        run: composer install
+      - name: ls vendor 1
+        run: ls -lah $GITHUB_WORKSPACE/vendor
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
       - name: Composer
-        run: cat $GITHUB_WORKSPACE/composer.lock
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: ls vendor
+        run: ls -lah $GITHUB_WORKSPACE/vendor
+
 
 #      - name: Set PHP versions
 #        # run: which php
