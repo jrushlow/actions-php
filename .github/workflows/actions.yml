@@ -11,12 +11,19 @@ jobs:
         php-versions: ['7.2', '7.3', '7.4']
 
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@v2.0.0
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
 
-      - name: Set PHP versions
-        # run: which php
-        run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
+      - name: Composer
+        run: composer install
+
+      - name: Composer
+        run: cat $GITHUB_WORKSPACE/composer.lock
+
+
+#      - name: Set PHP versions
+#        # run: which php
+#        run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-versions }}
       
       # - name: Cat Xdebug ini
       #   run: cat /etc/php/7.4/cli/conf.d/20-xdebug.ini
@@ -33,7 +40,7 @@ jobs:
       # - name: wtf
       #   run: php -v
       
-      - name: test
-        run: php -v | grep -oP "(?<=PHP )\d.\d" ::set-output name=version::value
-      
-      - if: steps.test.outputs.version == matrix.php-versions
+#      - name: test
+#        run: php -v | grep -oP "(?<=PHP )\d.\d" ::set-output name=version::value
+#
+#      - if: steps.test.outputs.version == matrix.php-versions
