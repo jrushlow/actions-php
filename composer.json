@@ -1,0 +1,8 @@
+{
+    "name": "root/actions-test",
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "geeshoe/db-connector": "dev-master"
+    }
+}
